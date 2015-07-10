@@ -1,27 +1,58 @@
 $(document).on('ready', function() {
  
+quoteArray = [];
 
-var Quote =(function(){
-	var quoteArray = [];
-	var quoteCounter = 1000;
+var CurrentQuote = function(quote, author){
+	this.quote = quote;
+	this.author = author;
+	quoteArray.push(this);	
+};
 
-	var currentQuote = function(quote, author){
-		this.quote = quote;
-		this.author = author;
-		quoteArray.push(this);
-	}
-	return currentQuote;
+$('.submit').on('submit', function(){
+	 event.preventDefault();
+	 var inputQuote = $('#quoteInput').val();
+	 var inputAuthor = $('#authorInput').val();
+	 var currentQuote = new CurrentQuote(inputQuote,inputAuthor);
+	 $('.quote-gallery').append('<div class="quote-wrapper"><div class="quote-text">' + currentQuote.quote + '<br>' + currentQuote.author + '</div></div>');
 });
 
-var quoteRef = 'quote' + toString(Quote.quoteCounter) //how do I access static quote counter from outside Quote
-console.log(quoteRef);
 
-$('.submit').on('click', function(){
-	// on click create a new instance of Quote pass .val() from both inputs as parameters to constructor.
-	 var quoteRef = quote + Quote.quoteCounter
-	 quoteRef = new Quote($('.quoteInput').val(),$('.authorInput').val());
-	 quoteRef++
-	 console.log(quoteRef);
-	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
